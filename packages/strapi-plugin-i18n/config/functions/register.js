@@ -7,7 +7,7 @@ module.exports = () => {
   Object.values(strapi.models).forEach(model => {
     if (getService('content-types').isLocalized(model)) {
       _.set(model.attributes, 'localizations', {
-        writable: false,
+        writable: true,
         private: false,
         configurable: false,
         collection: model.modelName,
@@ -15,7 +15,7 @@ module.exports = () => {
       });
 
       _.set(model.attributes, 'locale', {
-        writable: false,
+        writable: true,
         private: false,
         configurable: false,
         type: 'string',
